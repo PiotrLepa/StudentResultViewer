@@ -38,7 +38,7 @@ class ResponseConverter {
     final jsonFactory = jsonFactories[T];
     if (jsonFactory == null || jsonFactory is! JsonFactory<T>) {
       throw Exception(
-          "Json factory for type $T not found. Check if class is added to converters.");
+          "Json factory for type $T not found. Check if class is added to json factories.");
     }
     return jsonFactory(values);
   }
