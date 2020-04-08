@@ -7,7 +7,7 @@ part 'student_result.freezed.dart';
 @freezed
 abstract class StudentResult with _$StudentResult {
   const factory StudentResult({
-    @required String index,
+    @required int albumNumber,
     @required double mark,
     @required String group,
     @required int lecturePoints,

@@ -9,7 +9,7 @@ class StudentResultEntityMapper
     implements EntityMapper<StudentResult, StudentResultModel> {
   @override
   StudentResult toEntity(StudentResultModel model) => StudentResult(
-      index: model.index,
+      albumNumber: int.parse(model.index),
       mark: model.mark,
       group: model.group,
       lecturePoints: model.lecturePoints,

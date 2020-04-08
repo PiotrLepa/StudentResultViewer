@@ -5,5 +5,8 @@
   "apiErrorInternalServerError": "Wewnętrzny błąd serwera",
   "apiErrorUnknown": "Nieznany błąd",
   "errorFlushbarTitle": "Coś poszło nie tak",
-  "studentResultsAppBarTitle": "Wyniki studentów"
+  "studentResultsAppBarTitle": "Wyniki studentów",
+  "studentResultsHeaderAlbumNumber": "Nr albumu",
+  "studentResultsHeaderMark": "Ocena",
+  "studentResultsHeaderAllPoints": "Punkty"
 }

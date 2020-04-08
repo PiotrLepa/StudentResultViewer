@@ -17,9 +17,9 @@ class StudentResultItemsContainer extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        Expanded(child: firstItem),
-        Expanded(child: secondItem),
-        Expanded(child: thirdItem),
+        firstItem,
+        secondItem,
+        thirdItem,
       ],
     );
   }

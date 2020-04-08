@@ -22,11 +22,16 @@ class StudentResultScreen extends StatelessWidget {
                 newState is Loading || newState is RenderStudentResults,
             builder: (context, state) {
               return state.maybeMap(
-                loading: (loading) => Center(child: LoadingIndicator()),
-                renderStudentResults: (renderStudentResults) =>
-                    StudentResultPage(
-                  itemsData: renderStudentResults.items,
-                ),
+                loading: (loading) {
+                  return Center(child: LoadingIndicator());
+                },
+                renderStudentResults: (renderStudentResults) {
+                  return StudentResultPage(
+                    itemsData: renderStudentResults.items,
+                    sortOption: renderStudentResults.sortOption,
+                    sortType: renderStudentResults.sortType,
+                  );
+                },
                 // ignore: missing_return
                 orElse: () {},
               );

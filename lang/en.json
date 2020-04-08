@@ -5,5 +5,8 @@
   "apiErrorInternalServerError": "Internal server error",
   "apiErrorUnknown": "Unknown error",
   "errorFlushbarTitle": "Something get wrong",
-  "studentResultsAppBarTitle": "Student results"
+  "studentResultsAppBarTitle": "Student results",
+  "studentResultsHeaderAlbumNumber": "Album No.",
+  "studentResultsHeaderMark": "Mark",
+  "studentResultsHeaderAllPoints": "Points"
 }

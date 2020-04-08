@@ -13,7 +13,7 @@ class ThemeProvider {
 
   Color get textColorLight => Colors.grey;
 
-  Color get textColor => Colors.black87;
+  Color get textColor => Colors.white;
 
   ThemeData getThemeData() {
     return ThemeData(
@@ -37,7 +37,7 @@ class ThemeProvider {
         buttonColor: primaryColor,
       ),
       appBarTheme: AppBarTheme(
-        brightness: Brightness.light,
+        brightness: Brightness.dark,
         iconTheme: IconThemeData(
           color: textColor,
         ),
