@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result.dart';
-import 'package:student_result_viewer/presentation/student_results/widgets/student_result_item.dart';
+import 'package:student_result_viewer/presentation/student_results/widgets/list/student_results_item.dart';
 
 class StudentResultList extends StatelessWidget {
   final KtList<StudentResult> itemsData;
@@ -13,11 +13,12 @@ class StudentResultList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
       itemCount: itemsData.size,
       itemBuilder: (context, index) => StudentResultItem(
         data: itemsData[index],
       ),
+      separatorBuilder: (context, index) => const SizedBox(height: 16),
     );
   }
 }

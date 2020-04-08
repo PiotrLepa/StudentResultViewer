@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class ThemeProvider {
-  final bool isDark;
-
   Color get primaryColor => Color(0xFFF6CD61);
 
   Color get primaryColorLight => Color(0xFFFFEBA1);
@@ -13,15 +13,7 @@ class ThemeProvider {
 
   Color get textColorLight => Colors.grey;
 
-  Color get textColor => isDark ? Colors.white : Colors.black87;
-
-  factory ThemeProvider.of(BuildContext context) {
-    return ThemeProvider(
-      isDark: MediaQuery.of(context).platformBrightness == Brightness.dark,
-    );
-  }
-
-  ThemeProvider({@required this.isDark});
+  Color get textColor => Colors.black87;
 
   ThemeData getThemeData() {
     return ThemeData(
@@ -30,7 +22,7 @@ class ThemeProvider {
       primaryColorDark: primaryColorDark,
       accentColor: accentColor,
       fontFamily: 'Lato',
-      brightness: isDark ? Brightness.dark : Brightness.light,
+      brightness: Brightness.light,
       textTheme: TextTheme(
         button: TextStyle(
           fontSize: 20,
@@ -45,7 +37,7 @@ class ThemeProvider {
         buttonColor: primaryColor,
       ),
       appBarTheme: AppBarTheme(
-        brightness: isDark ? Brightness.dark : Brightness.light,
+        brightness: Brightness.light,
         iconTheme: IconThemeData(
           color: textColor,
         ),

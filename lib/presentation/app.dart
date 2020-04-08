@@ -21,8 +21,7 @@ class App extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: _localeProvider.getSupportedLocales().asList(),
-      theme: ThemeProvider(isDark: false).getThemeData(),
-      darkTheme: ThemeProvider(isDark: true).getThemeData(),
+      theme: getIt<ThemeProvider>().getThemeData(),
       builder: ExtendedNavigator<Router>(router: Router()),
     );
   }

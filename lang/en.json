@@ -4,5 +4,6 @@
   "apiErrorNotFound": "Not found",
   "apiErrorInternalServerError": "Internal server error",
   "apiErrorUnknown": "Unknown error",
-  "errorFlushbarTitle": "Something get wrong"
+  "errorFlushbarTitle": "Something get wrong",
+  "studentResultsAppBarTitle": "Student results"
 }
