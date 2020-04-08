@@ -25,9 +25,10 @@ class AppLocalizations {
         jsonMap.map((key, value) => MapEntry(key, value.toString()));
   }
 
-  String translate(String key) => _localizedStrings[key];
+  String translateKey(String key) => _localizedStrings[key];
 
-  String get(RawKeyString rawKeyString) => rawKeyString.get(_localizedStrings);
+  String translate(RawKeyString rawKeyString) =>
+      rawKeyString.get(_localizedStrings);
 
   static LocalizationsDelegate<AppLocalizations> delegate =
       _AppLocalizationsDelegate();

@@ -38,14 +38,11 @@ dependencies:
   freezed_annotation: ^0.7.1
   json_serializable: ^3.3.0
 
-  flushbar: ^1.9.1
+  flushbar: <1.9.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # Testing
-  mockito: ^4.1.1
 
   # Generators
   build_runner: ^1.8.1
