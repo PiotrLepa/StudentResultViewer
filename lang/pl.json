@@ -1,0 +1,8 @@
+{
+  "apiErrorNoConnection": "Brak połączenia z internetem",
+  "apiErrorBadRequest": "Nieznany błąd",
+  "apiErrorNotFound": "Nie znaleziono",
+  "apiErrorInternalServerError": "Wewnętrzny błąd serwera",
+  "apiErrorUnknown": "Nieznany błąd",
+  "errorFlushbarTitle": "Coś poszło nie tak"
+}
