@@ -5,6 +5,7 @@ import 'package:student_result_viewer/domain/entity/student_result/student_resul
 import 'package:student_result_viewer/domain/entity/student_result/student_result_sort_type.dart';
 import 'package:student_result_viewer/presentation/student_results/widgets/header/student_results_headers.dart';
 import 'package:student_result_viewer/presentation/student_results/widgets/list/student_results_list.dart';
+import 'package:student_result_viewer/presentation/student_results/widgets/search_bar/student_results_search_bar.dart';
 
 class StudentResultPage extends StatelessWidget {
   final KtList<StudentResult> itemsData;
@@ -20,21 +21,28 @@ class StudentResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          child: StudentResultsHeaders(
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        children: <Widget>[
+          StudentResultsSearchBar(),
+          _buildSeparator(),
+          StudentResultsHeaders(
             sortOption: sortOption,
             sortType: sortType,
           ),
-        ),
-        Expanded(
-          child: StudentResultList(
-            itemsData: itemsData,
+          _buildSeparator(),
+          Expanded(
+            child: StudentResultList(
+              itemsData: itemsData,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
+  }
+
+  Widget _buildSeparator() {
+    return SizedBox(height: 12);
   }
 }

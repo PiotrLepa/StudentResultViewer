@@ -16,13 +16,11 @@ class StudentResultItemsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        _buildSeparator(),
         Expanded(child: Center(child: firstItem)),
         _buildSeparator(),
         Expanded(child: Center(child: secondItem)),
         _buildSeparator(),
         Expanded(child: Center(child: thirdItem)),
-        _buildSeparator(),
       ],
     );
   }

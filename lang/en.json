@@ -9,5 +9,6 @@
   "studentResultsDetailsAppBarTitle": "Result details",
   "studentResultsHeaderAlbumNumber": "Album No.",
   "studentResultsHeaderMark": "Mark",
-  "studentResultsHeaderAllPoints": "Points"
+  "studentResultsHeaderAllPoints": "Points",
+  "studentResultsSearchFieldLabel": "Enter album number"
 }

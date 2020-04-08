@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:student_result_viewer/core/common/raw_key_string.dart';
 import 'package:student_result_viewer/core/common/router/router.gr.dart';
 import 'package:student_result_viewer/core/domain/bloc/bloc_helper.dart';
@@ -25,27 +26,47 @@ class StudentResultBloc extends Bloc<StudentResultEvent, StudentResultState> {
 
   KtList<StudentResult> _fetchedStudentResults;
 
-  StudentResultBloc(this._studentResultRepository,
-      this._studentResultsSorter,);
+  StudentResultBloc(
+    this._studentResultRepository,
+    this._studentResultsSorter,
+  );
 
   @override
   StudentResultState get initialState => StudentResultState.loading();
 
   @override
-  Stream<StudentResultState> mapEventToState(StudentResultEvent event,) async* {
+  Stream<StudentResultState> transformEvents(
+    Stream<StudentResultEvent> events,
+    Stream<StudentResultState> Function(StudentResultEvent) next,
+  ) {
+    return super.transformEvents(
+        events.debounce((event) => event is OnSearchInputChanged
+            ? TimerStream(true, Duration(milliseconds: 350))
+            : TimerStream(true, Duration())),
+        next);
+  }
+
+  @override
+  Stream<StudentResultState> mapEventToState(
+    StudentResultEvent event,
+  ) async* {
     yield* event.map(
       screenStarted: _mapScreenStartedEvent,
       sortResults: _mapSortResultsEvent,
-      onSearchInputChanged: (_) {}, // TODO
+      onSearchInputChanged: _mapOnSearchInputChangedEvent,
       onItemTapped: _mapOnItemTappedEvent,
     );
   }
 
-  Stream<StudentResultState> _mapScreenStartedEvent(ScreenStarted event,) async* {
+  Stream<StudentResultState> _mapScreenStartedEvent(
+    ScreenStarted event,
+  ) async* {
     yield* _fetchStudentResults();
   }
 
-  Stream<StudentResultState> _mapSortResultsEvent(SortResults event,) async* {
+  Stream<StudentResultState> _mapSortResultsEvent(
+    SortResults event,
+  ) async* {
     yield StudentResultState.renderStudentResults(
       items: _studentResultsSorter.sort(
         items: _fetchedStudentResults,
@@ -63,6 +84,14 @@ class StudentResultBloc extends Bloc<StudentResultEvent, StudentResultState> {
     ExtendedNavigator.ofRouter<Router>().pushStudentResultDetailsScreen(
       studentResult: onItemTapped.entity,
     );
+  }
+
+  Stream<StudentResultState> _mapOnSearchInputChangedEvent(
+    OnSearchInputChanged onItemTapped,
+  ) async* {
+    final newList = _fetchedStudentResults.filter(
+        (item) => item.albumNumber.toString().contains(onItemTapped.query));
+    yield (state as RenderStudentResults).copyWith(items: newList);
   }
 
   Stream<StudentResultState> _fetchStudentResults() async* {

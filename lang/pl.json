@@ -9,5 +9,6 @@
   "studentResultsDetailsAppBarTitle": "Szczegóły wyniku",
   "studentResultsHeaderAlbumNumber": "Nr albumu",
   "studentResultsHeaderMark": "Ocena",
-  "studentResultsHeaderAllPoints": "Punkty"
+  "studentResultsHeaderAllPoints": "Punkty",
+  "studentResultsSearchFieldLabel": "Wpisz numer albumu"
 }
