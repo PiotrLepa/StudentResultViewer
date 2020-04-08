@@ -6,6 +6,7 @@
   "apiErrorUnknown": "Nieznany błąd",
   "errorFlushbarTitle": "Coś poszło nie tak",
   "studentResultsAppBarTitle": "Wyniki studentów",
+  "studentResultsDetailsAppBarTitle": "Szczegóły wyniku",
   "studentResultsHeaderAlbumNumber": "Nr albumu",
   "studentResultsHeaderMark": "Ocena",
   "studentResultsHeaderAllPoints": "Punkty"

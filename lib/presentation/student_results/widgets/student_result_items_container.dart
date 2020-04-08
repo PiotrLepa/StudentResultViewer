@@ -15,12 +15,19 @@ class StudentResultItemsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        firstItem,
-        secondItem,
-        thirdItem,
+        _buildSeparator(),
+        Expanded(child: Center(child: firstItem)),
+        _buildSeparator(),
+        Expanded(child: Center(child: secondItem)),
+        _buildSeparator(),
+        Expanded(child: Center(child: thirdItem)),
+        _buildSeparator(),
       ],
     );
+  }
+
+  Widget _buildSeparator() {
+    return SizedBox(width: 12);
   }
 }

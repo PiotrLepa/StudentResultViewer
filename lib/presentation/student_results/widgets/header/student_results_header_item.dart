@@ -20,7 +20,7 @@ class StudentResultsHeaderItem extends StatelessWidget {
     return Material(
       child: Ink(
         decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).primaryColor,
           borderRadius: borderRadius,
         ),
         child: InkWell(
@@ -29,7 +29,6 @@ class StudentResultsHeaderItem extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 12,
-              horizontal: 16,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -38,28 +37,6 @@ class StudentResultsHeaderItem extends StatelessWidget {
                 _buildIcon(),
               ],
             ),
-          ),
-        ),
-      ),
-    );
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
-          borderRadius: BorderRadius.all(Radius.circular(16)),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 12,
-            horizontal: 16,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildText(),
-              _buildIcon(),
-            ],
           ),
         ),
       ),
@@ -89,11 +66,11 @@ class StudentResultsHeaderItem extends StatelessWidget {
   IconData _getIconData() {
     switch (sortType) {
       case StudentResultSortType.ascending:
-        return Icons.arrow_downward;
-      case StudentResultSortType.descending:
         return Icons.arrow_upward;
+      case StudentResultSortType.descending:
+        return Icons.arrow_downward;
       case StudentResultSortType.unsorted:
-        return Icons.close;
+        return Icons.fiber_manual_record;
     }
   }
 }

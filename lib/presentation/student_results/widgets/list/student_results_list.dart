@@ -18,7 +18,7 @@ class StudentResultList extends StatelessWidget {
       itemBuilder: (context, index) => StudentResultItem(
         data: itemsData[index],
       ),
-      separatorBuilder: (context, index) => const SizedBox(height: 16),
+      separatorBuilder: (context, index) => const SizedBox(height: 12),
     );
   }
 }

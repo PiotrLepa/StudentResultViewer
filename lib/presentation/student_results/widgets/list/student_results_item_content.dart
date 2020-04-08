@@ -14,19 +14,17 @@ class StudentResultItemContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StudentResultItemsContainer(
-      firstItem: _buildText(data.albumNumber.toString()),
-      secondItem: _buildText(data.mark.toString()),
-      thirdItem: _buildText(data.allPoints.toString()),
+      firstItem: _buildText(context, data.albumNumber.toString()),
+      secondItem: _buildText(context, data.mark.toString()),
+      thirdItem: _buildText(context, data.allPoints.toString()),
     );
   }
 
-  Widget _buildText(String text) {
+  Widget _buildText(BuildContext context, String text) {
     return Text(
       text,
       style: TextStyle(
         fontSize: 20,
-        fontWeight: FontWeight.w900,
-        color: Colors.white,
       ),
     );
   }
