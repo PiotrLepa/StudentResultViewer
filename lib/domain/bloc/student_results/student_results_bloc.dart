@@ -16,9 +16,7 @@ import 'package:student_result_viewer/domain/repository/student_result_repositor
 import 'package:student_result_viewer/domain/util/student_results_sorter.dart';
 
 part 'student_results_bloc.freezed.dart';
-
 part 'student_results_event.dart';
-
 part 'student_results_state.dart';
 
 @injectable
@@ -28,7 +26,8 @@ class StudentResultsBloc
   final StudentResultsSorter _studentResultsSorter;
 
   KtList<StudentResult> _fetchedStudentResults;
-  KtList<StudentResult> _filteredStudentResults;
+  KtList<StudentResult> _sortedStudentResults;
+  String _currentQuery = '';
 
   StudentResultsBloc(
     this._studentResultRepository,
@@ -71,12 +70,15 @@ class StudentResultsBloc
   Stream<StudentResultsState> _mapSortResultsEvent(
     SortResults event,
   ) async* {
+    _sortedStudentResults = _studentResultsSorter.sort(
+      items: _fetchedStudentResults,
+      sortOption: event.sortOption,
+      sortType: event.sortType,
+    );
     yield StudentResultsState.renderStudentResults(
-      items: _studentResultsSorter.sort(
-        items: _filteredStudentResults,
-        sortOption: event.sortOption,
-        sortType: event.sortType,
-      ),
+      items: _currentQuery != ''
+          ? _filterResults(_sortedStudentResults)
+          : _sortedStudentResults,
       sortOption: event.sortOption,
       sortType: event.sortType,
     );
@@ -91,12 +93,16 @@ class StudentResultsBloc
   }
 
   Stream<StudentResultsState> _mapOnSearchInputChangedEvent(
-    OnSearchInputChanged onItemTapped,
-  ) async* {
-    _filteredStudentResults = _fetchedStudentResults.filter(
-        (item) => item.albumNumber.toString().contains(onItemTapped.query));
+      OnSearchInputChanged onItemTapped,) async* {
+    _currentQuery = onItemTapped.query;
     yield (state as RenderStudentResults).copyWith(
-      items: _filteredStudentResults,
+      items: _filterResults(_sortedStudentResults),
+    );
+  }
+
+  KtList<StudentResult> _filterResults(KtList<StudentResult> items) {
+    return items.filter(
+          (item) => item.albumNumber.toString().contains(_currentQuery),
     );
   }
 
@@ -111,13 +117,13 @@ class StudentResultsBloc
           _fetchedStudentResults = response;
           final defaultSortOption = StudentResultSortOption.albumNumber;
           final defaultSortType = StudentResultSortType.ascending;
-          final items = _studentResultsSorter.sort(
+          _sortedStudentResults = _studentResultsSorter.sort(
             items: response,
             sortOption: defaultSortOption,
             sortType: defaultSortType,
           );
           yield StudentResultsState.renderStudentResults(
-            items: items,
+            items: _sortedStudentResults,
             sortOption: defaultSortOption,
             sortType: defaultSortType,
           );

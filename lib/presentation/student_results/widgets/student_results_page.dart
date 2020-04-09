@@ -14,7 +14,7 @@ class StudentResultPage extends StatelessWidget {
   final StudentResultSortOption sortOption;
   final StudentResultSortType sortType;
 
-  final separatorHeight = 12.0;
+  static const _separatorHeight = 12.0;
 
   const StudentResultPage({
     Key key,
@@ -26,16 +26,17 @@ class StudentResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: separatorHeight),
+      padding: const EdgeInsets.symmetric(horizontal: _separatorHeight),
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             backgroundColor: Colors.white,
             elevation: 0,
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(separatorHeight),
+            flexibleSpace: Padding(
+              padding: const EdgeInsets.only(top: _separatorHeight),
               child: StudentResultsSearchBar(),
             ),
+            expandedHeight: 70,
             floating: true,
           ),
           SliverAppBar(
@@ -71,6 +72,6 @@ class StudentResultPage extends StatelessWidget {
   }
 
   Widget _buildSeparator() {
-    return SizedBox(height: separatorHeight);
+    return const SizedBox(height: _separatorHeight);
   }
 }
