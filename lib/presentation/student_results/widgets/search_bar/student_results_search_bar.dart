@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_result_viewer/core/common/extension/build_context_extension.dart';
-import 'package:student_result_viewer/domain/bloc/student_result/student_result_bloc.dart';
+import 'package:student_result_viewer/domain/bloc/student_results/student_results_bloc.dart';
 
 class StudentResultsSearchBar extends StatelessWidget {
   @override
@@ -23,7 +23,7 @@ class StudentResultsSearchBar extends StatelessWidget {
 
   void _dispatchQueryChangedEvent(BuildContext context, String query) {
     context
-        .bloc<StudentResultBloc>()
-        .add(StudentResultEvent.onSearchInputChanged(query));
+        .bloc<StudentResultsBloc>()
+        .add(StudentResultsEvent.onSearchInputChanged(query));
   }
 }

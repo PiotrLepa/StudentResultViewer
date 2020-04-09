@@ -15,29 +15,33 @@ import 'package:student_result_viewer/domain/entity/student_result/student_resul
 import 'package:student_result_viewer/domain/repository/student_result_repository.dart';
 import 'package:student_result_viewer/domain/util/student_results_sorter.dart';
 
-part 'student_result_bloc.freezed.dart';
-part 'student_result_event.dart';
-part 'student_result_state.dart';
+part 'student_results_bloc.freezed.dart';
+
+part 'student_results_event.dart';
+
+part 'student_results_state.dart';
 
 @injectable
-class StudentResultBloc extends Bloc<StudentResultEvent, StudentResultState> {
+class StudentResultsBloc
+    extends Bloc<StudentResultsEvent, StudentResultsState> {
   final StudentResultRepository _studentResultRepository;
   final StudentResultsSorter _studentResultsSorter;
 
   KtList<StudentResult> _fetchedStudentResults;
+  KtList<StudentResult> _filteredStudentResults;
 
-  StudentResultBloc(
+  StudentResultsBloc(
     this._studentResultRepository,
     this._studentResultsSorter,
   );
 
   @override
-  StudentResultState get initialState => StudentResultState.loading();
+  StudentResultsState get initialState => StudentResultsState.loading();
 
   @override
-  Stream<StudentResultState> transformEvents(
-    Stream<StudentResultEvent> events,
-    Stream<StudentResultState> Function(StudentResultEvent) next,
+  Stream<StudentResultsState> transformEvents(
+    Stream<StudentResultsEvent> events,
+    Stream<StudentResultsState> Function(StudentResultsEvent) next,
   ) {
     return super.transformEvents(
         events.debounce((event) => event is OnSearchInputChanged
@@ -47,8 +51,8 @@ class StudentResultBloc extends Bloc<StudentResultEvent, StudentResultState> {
   }
 
   @override
-  Stream<StudentResultState> mapEventToState(
-    StudentResultEvent event,
+  Stream<StudentResultsState> mapEventToState(
+    StudentResultsEvent event,
   ) async* {
     yield* event.map(
       screenStarted: _mapScreenStartedEvent,
@@ -58,18 +62,18 @@ class StudentResultBloc extends Bloc<StudentResultEvent, StudentResultState> {
     );
   }
 
-  Stream<StudentResultState> _mapScreenStartedEvent(
+  Stream<StudentResultsState> _mapScreenStartedEvent(
     ScreenStarted event,
   ) async* {
     yield* _fetchStudentResults();
   }
 
-  Stream<StudentResultState> _mapSortResultsEvent(
+  Stream<StudentResultsState> _mapSortResultsEvent(
     SortResults event,
   ) async* {
-    yield StudentResultState.renderStudentResults(
+    yield StudentResultsState.renderStudentResults(
       items: _studentResultsSorter.sort(
-        items: _fetchedStudentResults,
+        items: _filteredStudentResults,
         sortOption: event.sortOption,
         sortType: event.sortType,
       ),
@@ -78,7 +82,7 @@ class StudentResultBloc extends Bloc<StudentResultEvent, StudentResultState> {
     );
   }
 
-  Stream<StudentResultState> _mapOnItemTappedEvent(
+  Stream<StudentResultsState> _mapOnItemTappedEvent(
     OnItemTapped onItemTapped,
   ) async* {
     ExtendedNavigator.ofRouter<Router>().pushStudentResultDetailsScreen(
@@ -86,20 +90,22 @@ class StudentResultBloc extends Bloc<StudentResultEvent, StudentResultState> {
     );
   }
 
-  Stream<StudentResultState> _mapOnSearchInputChangedEvent(
+  Stream<StudentResultsState> _mapOnSearchInputChangedEvent(
     OnSearchInputChanged onItemTapped,
   ) async* {
-    final newList = _fetchedStudentResults.filter(
+    _filteredStudentResults = _fetchedStudentResults.filter(
         (item) => item.albumNumber.toString().contains(onItemTapped.query));
-    yield (state as RenderStudentResults).copyWith(items: newList);
+    yield (state as RenderStudentResults).copyWith(
+      items: _filteredStudentResults,
+    );
   }
 
-  Stream<StudentResultState> _fetchStudentResults() async* {
+  Stream<StudentResultsState> _fetchStudentResults() async* {
     final request = fetch(_studentResultRepository.getStudentResults());
     await for (final state in request) {
       yield* state.when(
         progress: () async* {
-          yield StudentResultState.loading();
+          yield StudentResultsState.loading();
         },
         success: (response) async* {
           _fetchedStudentResults = response;
@@ -110,14 +116,14 @@ class StudentResultBloc extends Bloc<StudentResultEvent, StudentResultState> {
             sortOption: defaultSortOption,
             sortType: defaultSortType,
           );
-          yield StudentResultState.renderStudentResults(
+          yield StudentResultsState.renderStudentResults(
             items: items,
             sortOption: defaultSortOption,
             sortType: defaultSortType,
           );
         },
         error: (errorMessage) async* {
-          yield StudentResultState.renderError(errorMessage);
+          yield StudentResultsState.renderError(errorMessage);
         },
       );
     }

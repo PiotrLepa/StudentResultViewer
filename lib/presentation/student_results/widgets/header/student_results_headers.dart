@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_result_viewer/core/common/extension/build_context_extension.dart';
-import 'package:student_result_viewer/domain/bloc/student_result/student_result_bloc.dart';
+import 'package:student_result_viewer/domain/bloc/student_results/student_results_bloc.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result_sort_option.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result_sort_type.dart';
 import 'package:student_result_viewer/presentation/student_results/widgets/header/student_results_header_item.dart';
@@ -52,7 +52,7 @@ class StudentResultsHeaders extends StatelessWidget {
     BuildContext context,
     StudentResultSortOption sortOption,
   ) {
-    context.bloc<StudentResultBloc>().add(StudentResultEvent.sortResults(
+    context.bloc<StudentResultsBloc>().add(StudentResultsEvent.sortResults(
           sortOption: sortOption,
           sortType: _getNextSortType(),
         ));

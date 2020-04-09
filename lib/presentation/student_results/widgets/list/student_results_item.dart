@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:student_result_viewer/domain/bloc/student_result/student_result_bloc.dart';
+import 'package:student_result_viewer/domain/bloc/student_results/student_results_bloc.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result.dart';
 import 'package:student_result_viewer/presentation/student_results/widgets/list/student_results_item_content.dart';
 
@@ -57,7 +57,7 @@ class StudentResultItem extends StatelessWidget {
 
   void _dispatchItemTappedEvent(BuildContext context) {
     context
-        .bloc<StudentResultBloc>()
-        .add(StudentResultEvent.onItemTapped(data));
+        .bloc<StudentResultsBloc>()
+        .add(StudentResultsEvent.onItemTapped(data));
   }
 }
