@@ -17,7 +17,7 @@ class StudentResultItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final borderRadius = const BorderRadius.all(Radius.circular(16));
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.all(6),
       child: Material(
         child: Ink(
           decoration: BoxDecoration(

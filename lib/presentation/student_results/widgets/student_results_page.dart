@@ -1,16 +1,20 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result_sort_option.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result_sort_type.dart';
 import 'package:student_result_viewer/presentation/student_results/widgets/header/student_results_headers.dart';
-import 'package:student_result_viewer/presentation/student_results/widgets/list/student_results_list.dart';
+import 'package:student_result_viewer/presentation/student_results/widgets/list/student_results_item.dart';
 import 'package:student_result_viewer/presentation/student_results/widgets/search_bar/student_results_search_bar.dart';
 
 class StudentResultPage extends StatelessWidget {
   final KtList<StudentResult> itemsData;
   final StudentResultSortOption sortOption;
   final StudentResultSortType sortType;
+
+  final separatorHeight = 12.0;
 
   const StudentResultPage({
     Key key,
@@ -22,19 +26,43 @@ class StudentResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12),
-      child: Column(
-        children: <Widget>[
-          StudentResultsSearchBar(),
-          _buildSeparator(),
-          StudentResultsHeaders(
-            sortOption: sortOption,
-            sortType: sortType,
+      padding: EdgeInsets.symmetric(horizontal: separatorHeight),
+      child: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(separatorHeight),
+              child: StudentResultsSearchBar(),
+            ),
+            floating: true,
           ),
-          _buildSeparator(),
-          Expanded(
-            child: StudentResultList(
-              itemsData: itemsData,
+          SliverAppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(16),
+              child: ListView(
+                shrinkWrap: true,
+                children: <Widget>[
+                  _buildSeparator(),
+                  StudentResultsHeaders(
+                    sortOption: sortOption,
+                    sortType: sortType,
+                  ),
+                  _buildSeparator(),
+                ],
+              ),
+            ),
+            pinned: true,
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => StudentResultItem(
+                data: itemsData[index],
+              ),
+              childCount: itemsData.size,
             ),
           ),
         ],
@@ -43,6 +71,6 @@ class StudentResultPage extends StatelessWidget {
   }
 
   Widget _buildSeparator() {
-    return SizedBox(height: 12);
+    return SizedBox(height: separatorHeight);
   }
 }
