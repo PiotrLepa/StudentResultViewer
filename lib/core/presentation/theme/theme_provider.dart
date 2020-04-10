@@ -3,17 +3,17 @@ import 'package:injectable/injectable.dart';
 
 @lazySingleton
 class ThemeProvider {
-  Color get primaryColor => Color(0xFFF6CD61);
+  static Color get primaryColor => Color(0xFFF6CD61);
 
-  Color get primaryColorLight => Color(0xFFFFEBA1);
+  static Color get primaryColorLight => Color(0xFFFFEBA1);
 
-  Color get primaryColorDark => Color(0xFFC09C31);
+  static Color get primaryColorDark => Color(0xFFC09C31);
 
-  Color get accentColor => Colors.grey;
+  static Color get accentColor => Colors.grey;
 
-  Color get textColorLight => Colors.grey;
+  static Color get textColorLight => Colors.grey;
 
-  Color get textColor => Colors.white;
+  static Color get textColor => Colors.white;
 
   ThemeData getThemeData() {
     return ThemeData(

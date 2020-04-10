@@ -20,9 +20,9 @@ class StudentResultDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<StudentResultDetailsBloc>(
       create: (context) => getIt<StudentResultDetailsBloc>()
-        ..add(StudentResultDetailsEvent.screenStarted(
-          studentResult.albumNumber,
-        )),
+        ..add(
+          StudentResultDetailsEvent.screenStarted(studentResult.albumNumber),
+        ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -39,7 +39,8 @@ class StudentResultDetailsScreen extends StatelessWidget {
               },
               renderStudentResultDetails: (renderStudentResultDetails) {
                 return StudentResultDetailsPage(
-                  data: renderStudentResultDetails.details,
+                  result: studentResult,
+                  resultDetails: renderStudentResultDetails.details,
                 );
               },
               // ignore: missing_return

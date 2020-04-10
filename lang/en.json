@@ -10,5 +10,9 @@
   "studentResultsHeaderAlbumNumber": "Album No.",
   "studentResultsHeaderMark": "Mark",
   "studentResultsHeaderAllPoints": "Points",
-  "studentResultsSearchFieldLabel": "Enter album number"
+  "studentResultsSearchFieldLabel": "Enter album number",
+  "studentResultsLecturePoints": "Lectures",
+  "studentResultsHomeworkPoints": "Homework",
+  "studentResultsPresenceCounter": "Presence",
+  "studentResultsAbsenceCounter": "Absence"
 }
