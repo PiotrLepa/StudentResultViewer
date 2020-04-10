@@ -28,6 +28,7 @@ class StudentResultPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: _separatorHeight),
       child: CustomScrollView(
+        physics: BouncingScrollPhysics(),
         slivers: <Widget>[
           SliverAppBar(
             backgroundColor: Colors.white,
@@ -60,7 +61,7 @@ class StudentResultPage extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              (context, index) => StudentResultItem(
+                  (context, index) => StudentResultItem(
                 data: itemsData[index],
               ),
               childCount: itemsData.size,

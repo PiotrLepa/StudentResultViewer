@@ -11,8 +11,12 @@
   "studentResultsHeaderMark": "Ocena",
   "studentResultsHeaderAllPoints": "Punkty",
   "studentResultsSearchFieldLabel": "Wpisz numer albumu",
-  "studentResultsLecturePoints": "Wykłady",
-  "studentResultsHomeworkPoints": "Zadania",
-  "studentResultsPresenceCounter": "Obecności",
-  "studentResultsAbsenceCounter": "Nieobecności"
+  "studentResultsLecturePointsHeader": "Wykłady",
+  "studentResultsHomeworkPointsHeader": "Zadania",
+  "studentResultsPresenceCounterHeader": "Obecności",
+  "studentResultsAbsenceCounterHeader": "Nieobecności",
+  "studentResultsPresence": "Obecność",
+  "studentResultsAbsence": "Nieobecność",
+  "studentResultsDetailsDateOfLab": "Data laboratorium",
+  "studentResultsDetailsLabPoints": "Punkty"
 }

@@ -6,7 +6,7 @@ import 'package:student_result_viewer/core/injection/injection.dart';
 import 'package:student_result_viewer/domain/bloc/student_result_details/student_result_details_bloc.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result.dart';
 import 'package:student_result_viewer/presentation/common/loading_indicator.dart';
-import 'package:student_result_viewer/presentation/student_result_details/widgets/student_result_details_page.dart';
+import 'package:student_result_viewer/presentation/student_result_details/widgets/points/student_result_details_page.dart';
 
 class StudentResultDetailsScreen extends StatelessWidget {
   final StudentResult studentResult;

@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result.dart';
 import 'package:student_result_viewer/domain/entity/student_result_details/student_result_details.dart';
-import 'package:student_result_viewer/presentation/student_result_details/widgets/student_result_details_points_and_presence.dart';
+import 'package:student_result_viewer/presentation/student_result_details/widgets/lab/student_result_details_lab_list.dart';
+import 'package:student_result_viewer/presentation/student_result_details/widgets/points/student_result_details_points_and_presence.dart';
 
 class StudentResultDetailsPage extends StatelessWidget {
   final StudentResult result;
@@ -40,6 +42,21 @@ class StudentResultDetailsPage extends StatelessWidget {
           StudentResultDetailsPointsAndPresence(
             result: result,
           ),
+          SizedBox(height: 40),
+          Text(
+            "Labs",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(height: 20),
+          SizedBox(
+            height: 180,
+            child: StudentResultDetailsLabList(
+              labs: resultDetails.labs,
+            ),
+          )
         ],
       ),
     );

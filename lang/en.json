@@ -11,8 +11,12 @@
   "studentResultsHeaderMark": "Mark",
   "studentResultsHeaderAllPoints": "Points",
   "studentResultsSearchFieldLabel": "Enter album number",
-  "studentResultsLecturePoints": "Lectures",
-  "studentResultsHomeworkPoints": "Homework",
-  "studentResultsPresenceCounter": "Presence",
-  "studentResultsAbsenceCounter": "Absence"
+  "studentResultsLecturePointsHeader": "Lectures",
+  "studentResultsHomeworkPointsHeader": "Homework",
+  "studentResultsPresenceCounterHeader": "Presences",
+  "studentResultsAbsenceCounterHeader": "Absences",
+  "studentResultsPresence": "Presence",
+  "studentResultsAbsence": "Absence",
+  "studentResultsDetailsDateOfLab": "Data of lab",
+  "studentResultsDetailsLabPoints": "Points"
 }
