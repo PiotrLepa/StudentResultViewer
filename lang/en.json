@@ -5,6 +5,8 @@
   "apiErrorInternalServerError": "Internal server error",
   "apiErrorUnknown": "Unknown error",
   "errorFlushbarTitle": "Something get wrong",
+  "fetchError": "An error occurred while retrieving data",
+  "fetchErrorRetry": "Retry",
   "studentResultsAppBarTitle": "Student results",
   "studentResultsDetailsAppBarTitle": "Result details",
   "studentResultsHeaderAlbumNumber": "Album No.",

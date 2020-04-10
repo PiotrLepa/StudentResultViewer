@@ -54,15 +54,15 @@ class StudentResultsBloc
     StudentResultsEvent event,
   ) async* {
     yield* event.map(
-      screenStarted: _mapScreenStartedEvent,
+      fetchStudentResults: _mapFetchStudentResultsEvent,
       sortResults: _mapSortResultsEvent,
       onSearchInputChanged: _mapOnSearchInputChangedEvent,
       onItemTapped: _mapOnItemTappedEvent,
     );
   }
 
-  Stream<StudentResultsState> _mapScreenStartedEvent(
-    ScreenStarted event,
+  Stream<StudentResultsState> _mapFetchStudentResultsEvent(
+    FetchStudentResults event,
   ) async* {
     yield* _fetchStudentResults();
   }

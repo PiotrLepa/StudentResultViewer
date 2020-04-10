@@ -2,7 +2,7 @@ part of 'student_results_bloc.dart';
 
 @freezed
 abstract class StudentResultsEvent with _$StudentResultsEvent {
-  const factory StudentResultsEvent.screenStarted() = ScreenStarted;
+  const factory StudentResultsEvent.fetchStudentResults() = FetchStudentResults;
 
   const factory StudentResultsEvent.sortResults({
     @required StudentResultSortOption sortOption,

@@ -5,6 +5,8 @@
   "apiErrorInternalServerError": "Wewnętrzny błąd serwera",
   "apiErrorUnknown": "Nieznany błąd",
   "errorFlushbarTitle": "Coś poszło nie tak",
+  "fetchError": "Wystapił błąd podczas pobierania danych",
+  "fetchErrorRetry": "Ponów",
   "studentResultsAppBarTitle": "Wyniki studentów",
   "studentResultsDetailsAppBarTitle": "Szczegóły wyniku",
   "studentResultsHeaderAlbumNumber": "Nr albumu",

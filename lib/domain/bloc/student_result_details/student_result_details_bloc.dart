@@ -9,9 +9,7 @@ import 'package:student_result_viewer/domain/entity/student_result_details/stude
 import 'package:student_result_viewer/domain/repository/student_result_repository.dart';
 
 part 'student_result_details_bloc.freezed.dart';
-
 part 'student_result_details_event.dart';
-
 part 'student_result_details_state.dart';
 
 @injectable
@@ -31,7 +29,7 @@ class StudentResultDetailsBloc
   Stream<StudentResultDetailsState> mapEventToState(
     StudentResultDetailsEvent event,
   ) async* {
-    if (event is ScreenStarted) {
+    if (event is FetchDetails) {
       yield* _fetchStudentResultDetails(event.albumNumber);
     }
   }
