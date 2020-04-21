@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:student_result_viewer/presentation/student_result_details/widgets/student_result_details_item.dart';
 
@@ -18,15 +19,18 @@ class StudentResultDetailsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        StudentResultDetailsItem(
-          header: firstHeader,
-          content: firstContent,
+        Expanded(
+          child: StudentResultDetailsItem(
+            header: firstHeader,
+            content: firstContent,
+          ),
         ),
-        StudentResultDetailsItem(
-          header: secondHeader,
-          content: secondContent,
+        Expanded(
+          child: StudentResultDetailsItem(
+            header: secondHeader,
+            content: secondContent,
+          ),
         ),
       ],
     );
