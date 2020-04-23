@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:student_result_viewer/core/common/extension/build_context_extension.dart';
 import 'package:student_result_viewer/domain/entity/student_result/student_result.dart';
 import 'package:student_result_viewer/domain/entity/student_result_details/student_result_details.dart';
 import 'package:student_result_viewer/presentation/student_result_details/widgets/lab/student_result_details_lab_list.dart';
@@ -44,7 +45,7 @@ class StudentResultDetailsPage extends StatelessWidget {
           ),
           SizedBox(height: 40),
           Text(
-            "Labs",
+            context.translateKey('studentResultsDetailsLabsHeader'),
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w600,

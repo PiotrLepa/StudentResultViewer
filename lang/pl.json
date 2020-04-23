@@ -19,6 +19,7 @@
   "studentResultsAbsenceCounterHeader": "Nieobecności",
   "studentResultsPresence": "Obecność",
   "studentResultsAbsence": "Nieobecność",
+  "studentResultsDetailsLabsHeader": "Laboratoria",
   "studentResultsDetailsDateOfLab": "Data laboratorium",
   "studentResultsDetailsLabPoints": "Punkty"
 }
